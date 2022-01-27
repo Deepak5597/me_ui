@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import useAuth from '../hooks/useAuth';
+import useAuth from '../../hooks/useAuth';
 import { useNavigate, useLocation } from 'react-router-dom';
-import logo from '../images/logo.png';
-import useConfig from '../hooks/useConfig';
+import logo from '../../images/logo.png';
+import logoWithoutTextColored from '../../images/logo_without_text_colored.png';
+import useConfig from '../../hooks/useConfig';
 
 function Login() {
     const { login } = useAuth();
@@ -33,22 +34,22 @@ function Login() {
                     <img src={logo} className="h-full w-full object-fit" alt="logo"></img>
                 </div>
             </div>
-            <div className="flex flex-col justify-center items-center w-full md:w-1/2 p-20">
-
-                <h4 className="font-bold text-xl pb-10">
+            <div className="flex flex-col justify-center items-center w-full md:w-1/2 p-10 xl:p-20">
+                <img className="md:hidden" src={logoWithoutTextColored} alt="form_logo" height={50} width={50} />
+                <h4 className="font-bold text-md md:text-xl pb-10 pt-5">
                     Login to {appName}
                 </h4>
                 <form className="w-full lg:w-3/4" onSubmit={handleLogin}>
                     <div className="pt-5">
-                        <label className="block pb-3">Enter Your Email</label>
-                        <input className="w-full rounded-lg" type="text" name="email" onChange={handleFieldChange}></input>
+                        <label htmlFor="email" className="block pb-3 text-sm md:text-md">Enter Your Email</label>
+                        <input id="email" className="w-full rounded-lg" type="text" name="email" onChange={handleFieldChange}></input>
                     </div>
                     <div className="pt-5">
-                        <label className="block pb-3">Enter Your Password</label>
-                        <input className="w-full rounded-lg" type="password" name="password" onChange={handleFieldChange}></input>
+                        <label htmlFor="password" className="block pb-3 text-sm md:text-md">Enter Your Password</label>
+                        <input id="password" className="w-full rounded-lg" type="password" name="password" onChange={handleFieldChange}></input>
                     </div>
                     <div className="pt-8">
-                        <button className="w-full bg-primary-900 text-white rounded-lg py-3 cursor-pointer text-xl"> Log In </button>
+                        <button className="w-full bg-primary-900 text-white rounded-lg py-3 cursor-pointer text-sm md:text-md"> Log In </button>
                     </div>
                 </form>
             </div>

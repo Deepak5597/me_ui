@@ -1,6 +1,6 @@
-import useAuth from '../hooks/useAuth';
-import useConfig from '../hooks/useConfig';
-import getNameInitials from '../utils/getNameInitials';
+import useAuth from '../../hooks/useAuth';
+import useConfig from '../../hooks/useConfig';
+import getNameInitials from '../../utils/getNameInitials';
 import { FaHome, FaSitemap, FaUsers, FaWallet, FaFile } from 'react-icons/fa';
 import SideNavItem from './SideNavItem';
 
@@ -23,19 +23,19 @@ function Sidebar() {
             <div className="">
                 <ul>
                     <SideNavItem navHeading="Dashboard" navigateTo="/dashboard">
-                        <FaHome className="text-xl" />
+                        <FaHome className="text-lg" />
                     </SideNavItem>
                     <SideNavItem navHeading="Party" navigateTo="/party">
-                        <FaUsers className="text-xl" />
+                        <FaUsers className="text-lg" />
                     </SideNavItem>
                     <SideNavItem navHeading="Item" navigateTo="/item">
-                        <FaSitemap className="text-xl" />
+                        <FaSitemap className="text-lg" />
                     </SideNavItem>
                     <SideNavItem navHeading="Sale" navigateTo="/sale">
-                        <FaFile className="text-xl" />
+                        <FaFile className="text-lg" />
                     </SideNavItem>
                     <SideNavItem navHeading="Expense" navigateTo="/expense">
-                        <FaWallet className="text-xl" />
+                        <FaWallet className="text-lg" />
                     </SideNavItem>
                 </ul>
             </div>

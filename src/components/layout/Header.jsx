@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import logo from '../images/logo.png';
-import useAuth from '../hooks/useAuth';
-import useConfig from '../hooks/useConfig';
+import logo from '../../images/logo.png';
+import useAuth from '../../hooks/useAuth';
+import useConfig from '../../hooks/useConfig';
 
 import { FaUser, FaPowerOff, FaBars } from 'react-icons/fa';
-import getNameInitials from '../utils/getNameInitials';
+import getNameInitials from '../../utils/getNameInitials';
 
 function Header() {
     const { user, isLoggedIn, logout } = useAuth();
