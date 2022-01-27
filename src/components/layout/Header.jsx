@@ -2,19 +2,24 @@ import { useState, useEffect } from 'react';
 import logo from '../../images/logo.png';
 import useAuth from '../../hooks/useAuth';
 import useConfig from '../../hooks/useConfig';
+import useGlobal from '..//../hooks/useGlobal';
 
-import { FaUser, FaPowerOff, FaBars } from 'react-icons/fa';
+import { FaUser, FaPowerOff, FaBars, FaTimes } from 'react-icons/fa';
 import getNameInitials from '../../utils/getNameInitials';
 
 function Header() {
     const { user, isLoggedIn, logout } = useAuth();
     const { defaultUser, defaultRole } = useConfig();
+    const { sidebarState, setSidebarState } = useGlobal();
     const [loginStatus, setLoginStatus] = useState(false);
 
     useEffect(() => {
         setLoginStatus(isLoggedIn);
     }, [isLoggedIn])
 
+    const changeSidebarState = () => {
+        setSidebarState(!sidebarState);
+    }
     return (
         <header className="h-16 bg-primary-900 flex justify-between items-center px-5">
             <div className="h-[50px] flex justify-between items-center brightness-200">
@@ -23,7 +28,7 @@ function Header() {
             {
                 loginStatus && (
                     <>
-                        <div className="hidden md:flex justify-center items-center">
+                        <div className="hidden lg:flex justify-center items-center">
                             <div className="text-white text-sm h-100 flex flex-col justify-center">
                                 <div className="self-end">
                                     {user?.name ? user.name : defaultUser}
@@ -40,12 +45,15 @@ function Header() {
                                 </div>
                             </div>
                         </div>
-                        <div className="flex md:hidden">
-                            <FaBars className="text-2xl text-white cursor-pointer" />
-                        </div>
                     </>
                 )
             }
+            <div className="flex lg:hidden">
+                {
+                    sidebarState ? <FaTimes className="text-2xl text-white cursor-pointer" onClick={changeSidebarState} />
+                        : <FaBars className="text-2xl text-white cursor-pointer" onClick={changeSidebarState} />
+                }
+            </div>
         </header>
     );
 }

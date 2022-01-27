@@ -1,16 +1,16 @@
 import useAuth from '../../hooks/useAuth';
 import useConfig from '../../hooks/useConfig';
 import getNameInitials from '../../utils/getNameInitials';
-import { FaHome, FaSitemap, FaUsers, FaWallet, FaFile } from 'react-icons/fa';
+import { FaHome, FaSitemap, FaUsers, FaWallet, FaFile, FaPowerOff } from 'react-icons/fa';
 import SideNavItem from './SideNavItem';
 
 function Sidebar() {
 
-    const { user } = useAuth();
+    const { user, logout } = useAuth();
     const { defaultUser, appName } = useConfig();
 
     return (
-        <aside className="w-full flex flex-col overflow-y-scroll border-gray-200 border-r-2 shadow-md">
+        <aside className="w-full flex flex-col overflow-y-scroll border-gray-200 border-r-2 shadow-md relative">
             <div className="py-8 w-full self-center bg-secondary flex flex-col justify-center items-center">
                 <div className="h-16 w-16 rounded-full bg-primary-900 text-white flex justify-center items-center text-2xl">
                     {user?.name ? getNameInitials(user.name) : 'XX'}
@@ -38,6 +38,12 @@ function Sidebar() {
                         <FaWallet className="text-lg" />
                     </SideNavItem>
                 </ul>
+            </div>
+            <div className="flex flex-col justify-center items-center bg-white w-full h-40 hover:text-primary-900 hover:shadow-inner shadow-blue-900" >
+                <div className="flex flex-col justify-center items-center cursor-pointer " onClick={logout}>
+                    <FaPowerOff className="text-lg font-bold mb-1" />
+                    <p className="text-md">Logout</p>
+                </div>
             </div>
         </aside>
     );
