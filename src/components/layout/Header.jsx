@@ -20,6 +20,10 @@ function Header() {
     const changeSidebarState = () => {
         setSidebarState(!sidebarState);
     }
+    const handleLogout = () => {
+        setSidebarState(false);
+        logout();
+    }
     return (
         <header className="h-16 bg-primary-900 flex justify-between items-center px-5">
             <div className="h-[50px] flex justify-between items-center brightness-200">
@@ -41,7 +45,7 @@ function Header() {
                                 {user?.name ? getNameInitials(user.name) : 'XX'}
                                 <div className="hidden group-hover:flex absolute bg-gray-200 w-[150px] right-1/2 top-3/4 rounded-lg flex-col justify-center items-center overflow-hidden">
                                     <button className="py-2 w-full border-b-2 border-gray-300 flex justify-start items-center pl-3 hover:bg-primary-700 hover:text-white"> <FaUser /> <span className="ml-3">Profile</span></button>
-                                    <button className="py-2 w-full border-b-2 border-gray-300 flex justify-start items-center pl-3 hover:bg-primary-700 hover:text-white" onClick={logout} > <FaPowerOff /> <span className="ml-3">Log Out</span></button>
+                                    <button className="py-2 w-full border-b-2 border-gray-300 flex justify-start items-center pl-3 hover:bg-primary-700 hover:text-white" onClick={handleLogout} > <FaPowerOff /> <span className="ml-3">Log Out</span></button>
                                 </div>
                             </div>
                         </div>
