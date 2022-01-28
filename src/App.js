@@ -26,7 +26,7 @@ function App() {
               <Route element={<Layout />}>
 
                 {/* Protected Routes */}
-                <Route element={<ProtectedRoute allowedRoles={["admin"]} />}>
+                <Route element={<ProtectedRoute allowedRoles={["admin", "sales"]} />}>
                   <Route path="/" exact element={<Redirect pathname="/dashboard" />} />
                   <Route path="/dashboard" exact element={<Dashboard />} />
                   <Route path="/party" element={<Party />}>

@@ -15,7 +15,9 @@ function Layout() {
                 </div>
                 <div className="w-full lg:w-4/5">
                     <Suspense fallback={<Loading />}>
-                        <Outlet />
+                        <div className="h-full overflow-y-scroll">
+                            <Outlet />
+                        </div>
                     </Suspense>
                 </div>
             </div>
